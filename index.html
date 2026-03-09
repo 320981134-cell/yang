@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>iOS 极简桌面</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 核心毛玻璃效果 */
+        .glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* 极简闪粉图标：去色 + 高亮 + 对比度调整，模拟参考图质感 */
+        .app-icon-style {
+            filter: grayscale(0.8) brightness(1.2) contrast(0.8);
+            transition: transform 0.2s;
+        }
+        .app-icon-style:active { transform: scale(0.9); }
+
+        body { background-color: #e5e5e5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen">
+
+    <div class="w-[375px] h-[812px] bg-[#f9f9f9] rounded-[50px] shadow-2xl relative overflow-hidden border-[8px] border-[#222]">
+        
+        <div class="flex justify-between items-center px-8 pt-6 pb-2 text-[13px] font-semibold text-gray-600">
+            <span id="time">09:41</span>
+            <div class="flex items-center gap-1.5">
+                <i class="fas fa-signal"></i><i class="fas fa-wifi"></i>
+                <div class="w-6 h-3 border border-gray-600 rounded-[3px] p-[1px]"><div class="bg-gray-600 h-full w-[70%]"></div></div>
+            </div>
+        </div>
+
+        <div class="p-5 space-y-4">
+            <div class="glass rounded-[32px] h-36 p-5 flex flex-col justify-between">
+                <div class="flex justify-between text-[10px] text-gray-400"><span>Top Widgets+</span><span>阴</span></div>
+                <div class="text-[12px] text-gray-500 italic">词不达意是我们的通病</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 h-64">
+                <div class="glass rounded-[28px] p-4 text-[10px] text-gray-500 space-y-2">
+                    <div class="flex items-center gap-2 mb-2 font-bold text-gray-700"><i class="fas fa-bookmark"></i>每日todo list</div>
+                    <div class="border-t border-gray-300/50 pt-2">喝够8杯水 🥛</div>
+                    <div>坚持运动30min 🏃</div>
+                    <div>看书阅读30min 📚</div>
+                    <div>记得记账 🔥</div>
+                    <div>睡觉前复盘 📝</div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="glass rounded-2xl flex flex-col items-center justify-center text-[10px] text-gray-500">
+                        <span class="text-xl font-light">28</span><span>日历</span>
+                    </div>
+                    <div class="glass rounded-2xl flex flex-col items-center justify-center text-[10px] text-gray-500">
+                        <i class="fas fa-image text-lg"></i><span>照片</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-y-6 pt-4">
+                <script>
+                    const apps = [
+                        {name:'微信', icon:'fas fa-comment-dots'},
+                        {name:'游戏', icon:'fas fa-gamepad'},
+                        {name:'小说', icon:'fas fa-book'},
+                        {name:'小红书', icon:'fas fa-hashtag'},
+                        {name:'情侣空间', icon:'fas fa-heart'},
+                        {name:'查岗', icon:'fas fa-location-dot'},
+                        {name:'应用商店', icon:'fab fa-apple'}
+                    ];
+                    apps.forEach(app => {
+                        document.write(`
+                            <div class="flex flex-col items-center gap-1">
+                                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center app-icon-style">
+                                    <i class="${app.icon} text-xl text-gray-400"></i>
+                                </div>
+                                <span class="text-[9px] text-gray-500">${app.name}</span>
+                            </div>
+                        `);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-6 right-6 glass rounded-[35px] h-20 flex justify-around items-center">
+            <i class="fas fa-cog text-xl text-gray-500"></i>
+            <i class="fas fa-globe text-xl text-gray-500"></i>
+            <i class="fas fa-comment-alt text-xl text-gray-500"></i>
+        </div>
+    </div>
+
+    <script>
+        // 实时更新时间
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('time').innerText = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
