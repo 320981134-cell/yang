@@ -2,85 +2,57 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>仿手机UI界面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Style UI</title>
     <style>
-        /* 核心配置：保持移动端比例 */
-        :root {
-            --bg-color: #f5f5f5;
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --text-color: #333;
-            --radius: 25px;
+        body { margin: 0; background: #d1d1d1; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+
+        .phone-container {
+            width: 375px; height: 812px; background-color: #ffffff;
+            border-radius: 50px; padding: 20px; box-sizing: border-box;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column; gap: 15px; overflow: hidden; position: relative;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'PingFang SC', sans-serif;
+        /* 苹果风格状态栏 */
+        .ios-status-bar {
+            height: 44px; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 20px; font-size: 15px; font-weight: 600; color: #000;
         }
+        .status-icons { display: flex; gap: 6px; align-items: center; }
 
-        /* 手机框架：仿手机比例 9:19.5 */
-        .phone-frame {
-            width: 375px;
-            height: 812px;
-            background: #fff;
-            border-radius: 40px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            position: relative;
-        }
-
-        /* 顶部状态栏 */
-        .status-bar { height: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: bold; }
-
-        /* 顶部大卡片 */
-        .header-card { height: 120px; background: #f9f9f9; border-radius: var(--radius); margin: 15px 0; display: flex; align-items: center; padding: 15px; }
-
-        /* 中部布局：左侧清单 + 右侧图标网格 */
-        .main-content { display: flex; gap: 15px; }
-        .todo-list { flex: 1; background: #f9f9f9; border-radius: var(--radius); padding: 15px; }
+        /* 其他布局保持不变 */
+        .card { background: rgba(240, 240, 240, 0.8); backdrop-filter: blur(10px); border-radius: 30px; padding: 20px; }
+        .top-card { height: 150px; }
+        .main-content { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .todo-list { grid-row: span 2; padding: 20px; font-size: 14px; }
         .icon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .icon-item { width: 60px; height: 60px; background: #f9f9f9; border-radius: 15px; }
-
-        /* 底部信息组件 */
-        .bottom-widgets { margin-top: 15px; display: flex; gap: 15px; }
-        .bottom-widget-left { flex: 1; height: 100px; background: #f9f9f9; border-radius: var(--radius); }
-        .bottom-widget-right { flex: 1; height: 100px; background: #f9f9f9; border-radius: var(--radius); }
-
-        /* 底部 Dock 栏 */
-        .dock { height: 80px; margin-top: auto; display: flex; justify-content: space-around; align-items: center; background: #f9f9f9; border-radius: 30px; }
+        .icon { background: rgba(230, 230, 230, 0.6); height: 70px; border-radius: 20px; display: flex; justify-content: center; align-items: center; }
+        .footer-card { height: 120px; }
+        .dock { height: 90px; background: rgba(230, 230, 230, 0.9); border-radius: 40px; display: flex; justify-content: space-around; align-items: center; margin-top: auto; }
     </style>
 </head>
 <body>
 
-<div class="phone-frame">
-    <div class="status-bar"><span>18:11</span><span>5G 电池</span></div>
-    
-    <div class="header-card"><div>头像/文字区域</div></div>
-    
-    <div class="main-content">
-        <div class="todo-list">待办事项清单</div>
-        <div class="icon-grid">
-            <div class="icon-item">日历</div><div class="icon-item">照片</div>
-            <div class="icon-item">相机</div><div class="icon-item">天气</div>
+    <div class="phone-container">
+        <div class="ios-status-bar">
+            <span>18:11</span>
+            <div class="status-icons">
+                <span>信号</span><span>WiFi</span><span>电池</span>
+            </div>
         </div>
-    </div>
 
-    <div class="bottom-widgets">
-        <div class="bottom-widget-left">通讯/时钟/应用</div>
-        <div class="bottom-widget-right">日期/图片组件</div>
+        <div class="card top-card">头像/歌词</div>
+        <div class="main-content">
+            <div class="card todo-list">每日todo list</div>
+            <div class="icon-grid">
+                <div class="icon">日历</div><div class="icon">照片</div>
+                <div class="icon">相机</div><div class="icon">天气</div>
+            </div>
+        </div>
+        <div class="card footer-card">日期/天气/图片</div>
+        <div class="dock"><div>电话</div><div>其他</div></div>
     </div>
-
-    <div class="dock"><div>电话图标</div><div>其他图标</div></div>
-</div>
 
 </body>
 </html>
