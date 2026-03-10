@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>极简移动端主屏复刻</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #f4f4f4; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .icon-noise { filter: contrast(120%) brightness(100%) grayscale(100%); opacity: 0.8; }
+        /* 模拟图片中的噪点纹理感 */
+        .widget-shadow { box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen">
+
+    <div class="relative w-[375px] h-[812px] bg-white rounded-[50px] shadow-2xl overflow-hidden border-[8px] border-gray-200">
+        
+        <div class="flex justify-between items-center px-8 pt-4 pb-2 text-[12px] font-bold">
+            <span>09:41</span>
+            <div class="flex gap-1 items-center">
+                <div class="w-4 h-3 border border-black rounded-sm relative">
+                    <div class="absolute right-[-3px] top-1 w-1 h-1 bg-black rounded-full"></div>
+                </div>
+                <span>5G</span>
+            </div>
+        </div>
+
+        <div class="px-5 pt-4 space-y-6">
+            
+            <div class="glass widget-shadow rounded-[30px] p-4 flex flex-col gap-3">
+                <div class="flex justify-between items-start">
+                    <div class="w-16 h-16 bg-gray-300 rounded-xl border-2 border-white flex items-center justify-center">
+                        <span class="text-white text-2xl">★</span>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span class="text-[10px] text-gray-400">阴</span>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="text-sm font-medium">郁宅雪</span>
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="avatar" class="grayscale">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center px-4 py-2 opacity-60">
+                    <span>⇄</span> <span>⏮</span> <span>II</span> <span>⏭</span> <span>↻</span>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <div class="w-1/2 glass widget-shadow rounded-[25px] p-3 text-[10px]">
+                    <div class="flex items-center gap-1 border-b pb-1 mb-2">
+                        <span class="bg-black text-white rounded-full p-0.5 scale-75">🔖</span>
+                        <span class="font-bold">每日todo list</span>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center gap-1 border-b pb-1">○ 喝够8杯水 🥛</li>
+                        <li class="flex items-center gap-1 border-b pb-1">○ 坚持运动30min 🏃</li>
+                        <li class="flex items-center gap-1 border-b pb-1">○ 看书阅读30min 📚</li>
+                        <li class="flex items-center gap-1 border-b pb-1">○ 记得记账 🔥</li>
+                        <li class="flex items-center gap-1">○ 睡前复盘 📝</li>
+                    </ul>
+                </div>
+
+                <div class="w-1/2 grid grid-cols-2 gap-y-4 gap-x-2 text-center text-[10px]">
+                    <div>
+                        <div class="w-12 h-12 glass rounded-2xl mx-auto flex flex-col items-center justify-center icon-noise">
+                            <span class="text-[8px] text-red-500 font-bold">WED</span>
+                            <span class="text-xl">日</span>
+                        </div>
+                        <span class="mt-1 block">日历</span>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 glass rounded-2xl mx-auto flex items-center justify-center icon-noise">🌸</div>
+                        <span class="mt-1 block">照片</span>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 glass rounded-2xl mx-auto flex items-center justify-center icon-noise">📷</div>
+                        <span class="mt-1 block">相机</span>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 glass rounded-2xl mx-auto flex items-center justify-center icon-noise">☁️</div>
+                        <span class="mt-1 block">天气</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-4 items-end">
+                <div class="w-1/2 grid grid-cols-2 gap-y-4 text-center text-[10px]">
+                    <div>
+                        <div class="w-12 h-12 glass rounded-full mx-auto flex items-center justify-center">👤</div>
+                        <span class="mt-1 block">通讯录</span>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 glass rounded-full mx-auto flex items-center justify-center">⏱️</div>
+                        <span class="mt-1 block">时钟</span>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 glass rounded-2xl mx-auto flex items-center justify-center">🔳</div>
+                        <span class="mt-1 block">Top Widgets</span>
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 glass rounded-2xl mx-auto flex items-center justify-center">🎵</div>
+                        <span class="mt-1 block">抖音</span>
+                    </div>
+                </div>
+
+                <div class="w-1/2 glass widget-shadow rounded-[25px] p-3">
+                    <div class="flex justify-between items-center text-[10px] text-gray-400 mb-2">
+                        <span>11月13日</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="w-14 h-14 bg-gray-200 rounded-lg overflow-hidden grayscale">
+                             <img src="https://api.dicebear.com/7.x/micah/svg?seed=Jane" alt="portrait">
+                        </div>
+                        <div class="text-[9px] flex flex-col justify-between py-1">
+                            <div class="border rounded px-1">北京 阴</div>
+                            <div class="tracking-tighter font-mono">X X X . . . X</div>
+                        </div>
+                    </div>
+                    <div class="text-[8px] text-center mt-2 text-gray-400">Top Widgets*</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] h-20 glass rounded-[35px] flex justify-around items-center px-6">
+            <div class="w-14 h-14 glass rounded-full flex items-center justify-center shadow-inner">📞</div>
+            <div class="w-14 h-14 glass rounded-full flex items-center justify-center shadow-inner">⚙️</div>
+        </div>
+
+        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-gray-300 rounded-full"></div>
+    </div>
+
+</body>
+</html>
