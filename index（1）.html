@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist UI</title>
+    <style>
+        :root {
+            --bg-color: #F8F8F8;
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --sketch-color: #A0A0A0;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-container {
+            width: 375px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        /* 音乐组件 */
+        .music-widget { height: 70px; display: flex; align-items: center; gap: 15px; }
+        .album-art { width: 50px; height: 50px; border-radius: 12px; background: #EEE; }
+
+        /* 待办组件 */
+        .todo-item { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 12px; color: #444; }
+        .checkbox { width: 16px; height: 16px; border: 1.5px dashed var(--sketch-color); border-radius: 50%; }
+
+        /* 右侧网格组件 */
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .icon-box { 
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            background: var(--card-bg); padding: 15px; border-radius: 20px; border: 1px solid #FFF;
+        }
+        .sketch-shape { width: 30px; height: 30px; border: 2px dashed var(--sketch-color); border-radius: 8px; }
+
+        /* Dock栏 */
+        .dock {
+            position: fixed; bottom: 30px; width: 335px; height: 75px;
+            background: rgba(255,255,255,0.4); backdrop-filter: blur(20px);
+            border-radius: 35px; display: flex; justify-content: space-around; align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-container">
+    <div class="card music-widget">
+        <div class="album-art"></div>
+        <div style="font-size: 12px;">词不达意是我们的通病</div>
+    </div>
+
+    <div style="display: flex; gap: 12px;">
+        <div class="card" style="flex: 1.2;">
+            <div class="todo-item"><div class="checkbox"></div>喝够8杯水</div>
+            <div class="todo-item"><div class="checkbox"></div>坚持运动30min</div>
+            <div class="todo-item"><div class="checkbox"></div>看书阅读30min</div>
+        </div>
+
+        <div class="grid-container" style="flex: 1;">
+            <div class="icon-box"><div class="sketch-shape"></div><small>日历</small></div>
+            <div class="icon-box"><div class="sketch-shape"></div><small>照片</small></div>
+        </div>
+    </div>
+
+    <div class="dock">
+        <div class="sketch-shape"></div>
+        <div class="sketch-shape"></div>
+    </div>
+</div>
+
+</body>
+</html>
